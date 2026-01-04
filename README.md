@@ -6,7 +6,7 @@
 ## Usage
 
 ```yml
-      - name: Build
+      - name: Checkout
         uses: p6m7g8-actions/checkout@main
 ```
 
