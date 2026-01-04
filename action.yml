@@ -1,0 +1,18 @@
+nname: P6 safe checkout
+description: Centralized checkout that guarantees a single Authorization header
+
+runs:
+  using: composite
+  steps:
+    - name: Remove all existing git auth
+      shell: bash
+      run: |
+        git config --global --unset-all http.https://github.com/.extraheader || true
+        git config --local  --unset-all http.https://github.com/.extraheader || true
+        git config --global --remove-section includeIf || true
+        git config --local  --remove-section includeIf || true
+
+    - name: Safe checkout
+      uses: actions/checkout@v6.0.1
+      with:
+        persist-credentials: false
