@@ -1,5 +1,15 @@
-nname: P6 safe checkout
+name: P6 safe checkout
 description: Centralized checkout that guarantees a single Authorization header
+
+inputs:
+  repository:
+    description: "Repository to checkout"
+    required: false
+    default: ${{ github.repository }}
+  path:
+    description: "Path to checkout the repository into"
+    required: false
+    default: "."
 
 runs:
   using: composite
@@ -16,3 +26,5 @@ runs:
       uses: actions/checkout@v6.0.1
       with:
         persist-credentials: false
+        repository: ${{ inputs.repository }}
+        path: ${{ inputs.path }}
