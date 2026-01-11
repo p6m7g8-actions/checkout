@@ -10,6 +10,10 @@ inputs:
     description: "Path to checkout the repository into"
     required: false
     default: "."
+  fetch-depth:
+    description: "Number of commits to fetch. 0 indicates all history for all branches and tags."
+    required: false
+    default: 1
 
 runs:
   using: composite
@@ -28,3 +32,4 @@ runs:
         persist-credentials: false
         repository: ${{ inputs.repository }}
         path: ${{ inputs.path }}
+        fetch-depth: ${{ inputs.fetch-depth }}
