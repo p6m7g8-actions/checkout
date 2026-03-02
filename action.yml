@@ -22,12 +22,12 @@ runs:
       shell: bash
       run: |
         git config --global --unset-all http.https://github.com/.extraheader || true
-        git config --local  --unset-all http.https://github.com/.extraheader || true
-        git config --global --remove-section includeIf || true
-        git config --local  --remove-section includeIf || true
+        if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+          git config --local --unset-all http.https://github.com/.extraheader || true
+        fi
 
     - name: Safe checkout
-      uses: actions/checkout@v6.0.1
+      uses: actions/checkout@v6.0.2
       with:
         persist-credentials: false
         repository: ${{ inputs.repository }}
