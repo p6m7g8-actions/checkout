@@ -6,6 +6,10 @@ inputs:
     description: "Repository to checkout"
     required: false
     default: ${{ github.repository }}
+  ref:
+    description: "The branch, tag or SHA to checkout. Empty uses the default for the event."
+    required: false
+    default: ""
   path:
     description: "Path to checkout the repository into"
     required: false
@@ -31,5 +35,6 @@ runs:
       with:
         persist-credentials: false
         repository: ${{ inputs.repository }}
+        ref: ${{ inputs.ref }}
         path: ${{ inputs.path }}
         fetch-depth: ${{ inputs.fetch-depth }}
