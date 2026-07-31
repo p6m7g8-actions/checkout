@@ -7,5 +7,5 @@
 
 ```yml
       - name: Build
-        uses: p6m7g8-actions/checkout@main
+        uses: p6m7g8-actions/gh-repo-checkout@main
 ```
